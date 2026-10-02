@@ -27,8 +27,17 @@ from src.metrics import (
     stress_test,
 )
 from client_exposure.ui import render_client_exposure
+from database.initialize import initialize_database
 
 st.set_page_config(page_title="Financial Risk Dashboard", layout="wide")
+
+
+@st.cache_resource
+def initialize_database_on_startup():
+    initialize_database()
+
+
+initialize_database_on_startup()
 
 STRESS_SCENARIOS = {
     "COVID Crash 2020": ("2020-02-19", "2020-03-23"),
