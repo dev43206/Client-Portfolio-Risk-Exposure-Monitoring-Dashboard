@@ -4,3 +4,4 @@ __pycache__/
 .streamlit/
 .claude/
 .DS_Store
+data/*.db
