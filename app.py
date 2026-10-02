@@ -26,6 +26,7 @@ from src.metrics import (
     sharpe_ratio,
     stress_test,
 )
+from client_exposure.ui import render_client_exposure
 
 st.set_page_config(page_title="Financial Risk Dashboard", layout="wide")
 
@@ -76,6 +77,14 @@ def get_factors(start, end):
 
 def main():
     st.title("Financial Risk Dashboard")
+
+    section = st.sidebar.radio(
+        "Dashboard section",
+        ["Portfolio Risk Dashboard", "Client Exposure Monitoring"],
+    )
+    if section == "Client Exposure Monitoring":
+        render_client_exposure()
+        return
 
     with st.sidebar:
         st.header("Portfolio Settings")
